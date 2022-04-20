@@ -2,16 +2,16 @@ version: '3'
 
 services:
 
-  mosquitto:
-    image: eclipse-mosquitto:latest
-    container_name: mosquitto
+  scheduler:
+    image: py2
+    container_name: scheduler
     volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
-#    ports:
-#      - 3389:3389
+      - ./:/python-docker/
+    environment:
+      - FLASK_DEBUG=1
+    ports:
+     - 5000:5000
+ 
+
     restart: unless-stopped
 
-networks:
-  default:
-    external:
-      name: edge
