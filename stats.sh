@@ -1,0 +1,1 @@
+LOG=$(docker stats --format '{"Name": "{{.Name}}", "CPU Usage": "{{.CPUPerc}}", "Memory Usage": "{{.MemUsage}}", "Network I/O": "{{.NetIO}}", "Block I/O": "{{.BlockIO}}" }' --no-stream | sed ':a;N;$!ba;s/\n/,/g') && echo [$LOG]
